@@ -5,7 +5,7 @@
 
 ## Executive summary
 
-Both CSV files contain 9,800 records and 18 columns. They match exactly, including row order; the cleaned CSV currently has the same values as the raw source. There are no blank values other than 11 missing postal codes, no duplicate rows, and no duplicate row IDs. Dates parse successfully and no ship date is earlier than its order date.
+Both CSV files contain 9,800 records and 18 columns in the same row order. The cleaned CSV standardizes the raw day/month/year dates to ISO `YYYY-MM-DD`; all other field values are preserved. There are no blank values other than 11 missing postal codes, no duplicate rows, and no duplicate row IDs. Dates parse successfully and no ship date is earlier than its order date.
 
 Two consistency issues merit review before using the affected fields for detailed lookups: 32 product IDs map to multiple product names, and postal code `92024` maps to two cities. The missing postal codes all belong to Burlington, Vermont. Preserve these values as missing or unresolved rather than guessing replacements.
 
@@ -68,9 +68,9 @@ Postal codes should be imported as text, not numeric values, so formatting (incl
 1. **Missing postal codes (11 rows, 0.11%).** All occur for Burlington, Vermont. Retain them as null/blank unless an authoritative source supplies the postal code; do not impute it from city alone.
 2. **Product ID/name conflicts (32 IDs).** A single `Product ID` maps to multiple `Product Name` values. Product IDs consistently map to one category and sub-category, but names should not be treated as a reliable one-to-one product lookup until reconciled against an authoritative product catalog.
 3. **Postal code/city conflict (one postal code).** `92024` appears with both Encinitas and San Diego, California. Review with a trusted geographic reference before using postal code as a unique city key.
-4. **CSV date-format caveat.** The cleaned CSV preserves the source date strings in `DD/MM/YYYY` format (for example, `08/11/2017`); it does not contain ISO-formatted date strings. Configure CSV imports accordingly and validate parsed dates. The raw and cleaned CSVs otherwise match exactly.
+4. **CSV date standardization.** The raw source dates use `DD/MM/YYYY`; the cleaned CSV stores them in ISO `YYYY-MM-DD` format for consistent downstream imports. The Excel workbook stores these as date values, and the SQLite database stores ISO date text.
 5. **Available measures.** Profit, quantity, discount, and delivery date are not present. Do not infer profitability, units sold, discount effects, or delivery performance from these records.
 
 ## Profiling basis
 
-Checks were run against both CSVs for record/column counts, per-field missing and distinct values, full-row and row-ID duplicates, type/date parsing, sales range, whitespace, and selected identifier-to-description relationships. The row-by-row comparison found no differences between the raw and cleaned CSV files.
+Checks were run against both CSVs for record/column counts, per-field missing and distinct values, full-row and row-ID duplicates, type/date parsing, sales range, whitespace, and selected identifier-to-description relationships. A row-by-row comparison confirmed the same records and order, with only the two date fields reformatted in the cleaned CSV.

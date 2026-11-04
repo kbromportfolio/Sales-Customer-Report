@@ -39,14 +39,28 @@ The available data does not include profit, quantity, discount, or delivery date
 
 ## Use the prepared data
 
-The cleaned CSV and SQLite database are included in `Data/Cleaned/`.
+The cleaned CSV, Excel workbook, and SQLite database are included in `Data/Cleaned/`.
 
 ### SQLiteStudio
 
 1. Open SQLiteStudio and add `Data/Cleaned/sales_customer.db` as a database.
 2. Open the `sales` table to inspect the prepared records, or use the SQL editor to run analysis queries.
-3. Use `sql/schema.sql` as the reference for the table structure and indexes.
 
 ## Data Profiling
 
 Profiled the dataset structure, field types, missing values, duplicates, and distinct values. The 9,800 records have unique row IDs and no duplicate rows; 11 postal codes are missing. The data also contains conflicting product names for some product IDs and a ZIP code linked to two cities. These issues are documented for review, with missing values preserved rather than guessed.
+
+See [the data profiling and quality report](reports/data-profiling-quality-report.md) for field-level results and details on known source-data conflicts.
+
+## Excel Data Cleaning & Validation
+
+The prepared workbook is `Data/Cleaned/sales_customer_cleaned.xlsx`. Its **Sales** sheet contains the 9,800 transaction lines, **Cleaning Log** records the transformations, and **SQL Validation** lists the checks and outcomes.
+
+Cleaning and validation decisions:
+
+- The raw source is preserved unchanged. Source dates are parsed as day/month/year; dates in the cleaned CSV and SQLite database use ISO `YYYY-MM-DD`, while the workbook stores Excel date values.
+- Row IDs are integers, sales are numeric, and postal codes are stored as text. The 11 missing postal codes are left blank and are not imputed.
+- No complete duplicate rows or duplicate row IDs were found. Required fields, date parsing/order, and non-negative sales passed validation.
+- Conflicting product names for 32 product IDs and the city conflict for postal code `92024` are retained and flagged for review rather than resolved by guesswork.
+
+See the workbook's **SQL Validation** sheet and [the data profiling and quality report](reports/data-profiling-quality-report.md) for check results and limitations.
