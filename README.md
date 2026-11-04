@@ -47,3 +47,6 @@ The cleaned CSV and SQLite database are included in `Data/Cleaned/`.
 2. Open the `sales` table to inspect the prepared records, or use the SQL editor to run analysis queries.
 3. Use `sql/schema.sql` as the reference for the table structure and indexes.
 
+## Data Profiling
+
+Profiled the dataset structure, field types, missing values, duplicates, and distinct values. The 9,800 records have unique row IDs and no duplicate rows; 11 postal codes are missing. The data also contains conflicting product names for some product IDs and a ZIP code linked to two cities. These issues are documented for review, with missing values preserved rather than guessed.
