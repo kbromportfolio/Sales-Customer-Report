@@ -64,3 +64,16 @@ Cleaning and validation decisions:
 - Conflicting product names for 32 product IDs and the city conflict for postal code `92024` are retained and flagged for review rather than resolved by guesswork.
 
 See the workbook's **SQL Validation** sheet and [the data profiling and quality report](reports/data-profiling-quality-report.md) for check results and limitations.
+
+## SQLite Database Development
+
+The SQLite database is `Data/Cleaned/sales_customer.db`. The `sales` table stores one record per product-level order line, with ISO dates, numeric sales, and nullable text postal codes. Its schema and lookup indexes are defined in `sql/schema.sql`.
+
+To rebuild the database from the cleaned CSV, run this command from the repository root:
+
+powershell
+python sql\import_cleaned_csv.py
+
+The importer validates the CSV headers, required values, ISO dates, date order, non-negative sales, row IDs, and the 11 expected missing postal codes. It builds and checks a temporary database before replacing the prepared database, so an unsuccessful import does not overwrite the existing database.
+
+To verify the imported data in SQLiteStudio, open `Data/Cleaned/sales_customer.db` and run the checks in `sql/validation.sql`. They verify the 9,800-row count, unique row IDs, required values, date validity/order, non-negative sales, and retained missing postal codes. Known product-name and postal-code/city conflicts are source-data review items and are not changed during import.
