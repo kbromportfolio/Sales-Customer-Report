@@ -77,3 +77,8 @@ python sql\import_cleaned_csv.py
 The importer validates the CSV headers, required values, ISO dates, date order, non-negative sales, row IDs, and the 11 expected missing postal codes. It builds and checks a temporary database before replacing the prepared database, so an unsuccessful import does not overwrite the existing database.
 
 To verify the imported data in SQLiteStudio, open `Data/Cleaned/sales_customer.db` and run the checks in `sql/validation.sql`. They verify the 9,800-row count, unique row IDs, required values, date validity/order, non-negative sales, and retained missing postal codes. Known product-name and postal-code/city conflicts are source-data review items and are not changed during import.
+
+calculated five KPIs using SQLiteStudio:
+* KPI 1 — Total Sales: Sum of all valid sales values.
+* KPI 2 — Distinct Orders: Count of unique order IDs.
+* KPI 3 — Unique Customers: Count of distinct customer IDs.
