@@ -82,3 +82,6 @@ calculated five KPIs using SQLiteStudio:
 * KPI 1 — Total Sales: Sum of all valid sales values.
 * KPI 2 — Distinct Orders: Count of unique order IDs.
 * KPI 3 — Unique Customers: Count of distinct customer IDs.
+* KPI 4 — Average Order Value: Total Sales divided by Distinct Orders.
+* KPI 5 — Average Order-to-Ship Days: Average of the difference between ship and order dates for all valid records.
+
