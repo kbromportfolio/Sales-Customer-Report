@@ -85,3 +85,32 @@ calculated five KPIs using SQLiteStudio:
 * KPI 4 — Average Order Value: Total Sales divided by Distinct Orders.
 * KPI 5 — Average Order-to-Ship Days: Average of the difference between ship and order dates for all valid records.
 
+## SQL Analysis
+
+Five Key Performance Indicators (KPIs) were developed in Power BI using DAX measures and a calculated column to evaluate sales performance, customer activity and shipping duration.
+1. KPI 1 — Total Sales: Sum of all valid sales values.
+2. KPI 2 — Distinct Orders: Count of unique order IDs.
+3. KPI 3 — Unique Customers: Count of distinct customer IDs.
+4. KPI 4 — Average Order Value: Total Sales divided by Distinct Orders.
+5. KPI 5 — Average Order-to-Ship Days: Average difference in days between order dates and ship dates across all valid records.
+These KPIs are displayed as individual cards in the Power BI dashboard, providing a concise overview of the dataset's key performance measures.
+
+KPI Calculations and Validation Using SQLiteStudio
+Before developing the Power BI dashboard, five Key Performance Indicators (KPIs) were calculated using SQL queries in SQLiteStudio. These results were then used as reference values to cross-check and validate the corresponding DAX calculations and KPI cards in Power BI.
+
+
+## Power BI Development
+Dashboard Visualisations
+The Power BI dashboard includes:
+•	Monthly Sales Trend
+•	Yearly Sales Trend
+•	Sales by Product and Category
+•	Sales by Region
+•	Sales by Customer Segment
+Key Findings
+The dashboard is designed to highlight:
+•	Changes in sales over time.
+•	Differences in sales across product categories and regions.
+•	Sales distribution across customer segments.
+•	Average time between ordering and shipping.
+
