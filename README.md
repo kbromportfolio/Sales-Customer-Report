@@ -107,10 +107,35 @@ The Power BI dashboard includes:
 •	Sales by Product and Category
 •	Sales by Region
 •	Sales by Customer Segment
-Key Findings
+# Key Findings
 The dashboard is designed to highlight:
 •	Changes in sales over time.
 •	Differences in sales across product categories and regions.
 •	Sales distribution across customer segments.
 •	Average time between ordering and shipping.
 
+## Final Review & GitHub Publication
+
+The final stage focuses on completing the project findings and recommendations, reviewing the accuracy of the analysis, and preparing the project for publication on GitHub.
+
+### Tasks Completed
+- Finalise the analysis findings and business recommendations.
+- Update the README file and project documentation.
+- Validate SQL queries and Power BI DAX calculations.
+- Cross-check KPI results between SQLiteStudio and Power BI.
+- Test dashboard functionality, including charts, slicers, and interactive filters.
+- Review dashboard layout, formatting, and data accuracy.
+- Capture screenshots of the completed dashboard and key SQL analysis.
+- Organise project files and ensure the GitHub repository structure is clear.
+- Publish the final project to GitHub.
+
+### Final Deliverables
+- Completed SQL analysis and queries.
+- Interactive Power BI dashboard.
+- Validated KPI calculations.
+- Final project findings and recommendations.
+- Updated README and technical documentation.
+- Dashboard and analysis screenshots.
+- Published GitHub portfolio repository.
+
+**Expected Outcome:** A complete, documented, and validated Sales & Customer Analytics project demonstrating practical skills in SQL, data analysis, KPI development, Power BI visualisation, and GitHub version control.
